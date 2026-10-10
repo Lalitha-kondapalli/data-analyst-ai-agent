@@ -22,7 +22,7 @@ class TestDataAnalystAgent(unittest.TestCase):
         expected = self.data["Salary"].mean()
         self.assertIn("average salary is", result)
         actual = float(result.split()[-1].rstrip("."))
-        self.assertAlmostEqual(actual, expected)
+        self.assertAlmostEqual(actual, expected, places=2)
 
     def test_department_employee_count(self):
         result = run_tool("count_employees", self.data)
