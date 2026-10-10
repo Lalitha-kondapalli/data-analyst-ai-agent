@@ -1,4 +1,5 @@
 
+
 import unittest
 import pandas as pd
 from agent import choose_tool, run_tool
@@ -17,10 +18,11 @@ class TestDataAnalystAgent(unittest.TestCase):
         self.assertEqual(tool, "highest_salary")
 
     def test_average_salary(self):
-    result = run_tool("average_salary", self.data)
-    expected = self.data["Salary"].mean()
-    self.assertIn("average salary is", result)
-    self.assertAlmostEqual(float(result.split()[-1].rstrip(".")), expected)
+        result = run_tool("average_salary", self.data)
+        expected = self.data["Salary"].mean()
+        self.assertIn("average salary is", result)
+        actual = float(result.split()[-1].rstrip("."))
+        self.assertAlmostEqual(actual, expected)
 
     def test_department_employee_count(self):
         result = run_tool("count_employees", self.data)
